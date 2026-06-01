@@ -15,19 +15,34 @@ Note that any schedules that were already disabled prior to running `disable_sch
 ### Dependencies
 
 * You must have [ansible-navigator](https://docs.ansible.com/projects/navigator/installation/) installed to run these playbooks
+* Required collections:
+  * ansible.controller
+
+```sh
+ansible-galaxy collection install ansible.controller
+```
 
 ### Installing
 
-* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in both playbooks with your URL and API token, respectively
+* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in group_vars directory with your URL and API token, respectively
 
 ### Executing program
 
-* To disable all active schedules
+* The ansible-navigator.yml file specifies the AAP 2.6 execution environment. If you are running this on a lower environment you will need to call the EE during the run command:
+
+```sh
+ansible-navigator run disable_schedules.yml --eei registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9
 ```
+
+* To disable all active schedules
+
+```sh
 ansible-navigator run disable_schedules.yml
 ```
+
 * To re-enable all schedules disabled in the previous step
-```
+
+```sh
 ansible-navigator run enable_schedules.yml
 ```
 

@@ -1,5 +1,5 @@
 ---
-- name: Re-enable schedules
+- name: Re-enable previously disabled schedules
   hosts: localhost
   gather_facts: false
 
