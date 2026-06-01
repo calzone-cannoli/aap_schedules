@@ -2,6 +2,8 @@
 - name: Disable all enabled schedules in AAP 2.4
   hosts: localhost
   gather_facts: false
+  vars_files:
+    - schedules_vars.yml
 
   tasks:
 
@@ -27,11 +29,10 @@
       ansible.builtin.debug:
         msg: "I am version 2.4"
       when:
-        - aap_version > "4.5"
-        - aap_version < "4.6"
+        - aap_version is ansible.builtin.contains("4.5")
 
     - name: Debug stuff
       ansible.builtin.debug:
         msg: "I am version 2.6"
       when:
-        - aap_version > "2.6"
+        - aap_version is ansible.builtin.contains("2.6")
