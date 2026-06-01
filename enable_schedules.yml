@@ -2,6 +2,12 @@
 - name: Re-enable schedules
   hosts: localhost
   gather_facts: false
+
+  pre_tasks:
+    - name: Check Ansible Automation Platform version
+      ansible.builtin.import_playbook:
+        file: aap_version_check.yml
+
   roles:
     - enable
       #  vars:
