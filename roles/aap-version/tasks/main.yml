@@ -1,2 +1,31 @@
 ---
 # tasks file for aap-version
+- name: Query the Controller configuration endpoint
+  ansible.builtin.uri:
+    url: "{{ controller_url }}/api/"
+    method: GET
+    status_code: 200
+    headers:
+      Authorization: "Bearer {{ controller_token }}"
+      Content-Type: "application/json"
+  register: controller_config
+
+- name: Debug config
+  ansible.builtin.set_fact:
+    aap_version: "{{ controller_config.x_api_product_version }}"
+
+- name: Debug config
+  ansible.builtin.debug:
+    var: aap_version
+
+- name: Debug stuff
+  ansible.builtin.debug:
+    msg: "I am version 2.4"
+  when:
+    - aap_version is ansible.builtin.contains("4.5")
+
+- name: Debug stuff
+  ansible.builtin.debug:
+    msg: "I am version 2.6"
+  when:
+    - aap_version is ansible.builtin.contains("2.6")
