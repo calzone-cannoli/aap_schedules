@@ -10,16 +10,13 @@
       Content-Type: "application/json"
   register: enabled_schedules
 
-- name: Show me the schedules
+- name: Show me the schedules # noqa: risky-file-permissions
   ansible.builtin.lineinfile:
-    # var: enabled_schedules.json.count
-    # msg: "Count was: {{ enabled_schedules }}"
     line: "{{ item.id }}"
-    path: ./test.txt
+    path: ./sched_ids.txt
     create: true
   loop:
     "{{ enabled_schedules.json.results }}"
-
 
 - name: Disable each schedule found
   ansible.controller.schedule:
