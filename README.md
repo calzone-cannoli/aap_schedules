@@ -1,14 +1,12 @@
-# Project Title
-
-Disable and Re-Enable AAP Schedules
+# Disable/Re-enable Schedules in Ansible Automation Platform
 
 ## Description
 
-This project contains a playbook to disable all active schedules in AAP 2.4 and a playbook to re-enable those schedules in AAP 2.6
+This project contains a playbook to disable all active schedules in AAP 2.4 and above and a playbook to re-enable those schedules after upgrades, system maintenance, etc.
 
-The intent of this project is to disable schedules to allow for an AAP 2.4 to 2.6 upgrade and enable them once the upgrade is complete
+The intent of this project is to disable schedules to allow for an AAP upgrade, or other system maintenance, and enable the same schedules once the work is complete.
 
-Note that any schedules that were already disabled prior to running `disable_schedules.yml` will stay disabled after running `enable_schedules.yml`
+NOTE: Any schedules that were already disabled prior to running `disable_schedules.yml` will stay disabled after running `enable_schedules.yml`
 
 ## Getting Started
 
@@ -17,6 +15,10 @@ Note that any schedules that were already disabled prior to running `disable_sch
 * You must have [ansible-navigator](https://docs.ansible.com/projects/navigator/installation/) installed to run these playbooks
 * Required collections:
   * ansible.controller
+* Required Execution Environment:
+  * Based on AAP version:
+    * 2.4: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
+    * 2.6: registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9:latest
 
 ```sh
 ansible-galaxy collection install ansible.controller
@@ -24,7 +26,7 @@ ansible-galaxy collection install ansible.controller
 
 ### Installing
 
-* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in group_vars directory with your URL and API token, respectively
+* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in group_vars directory with your controller URL and API token, respectively
 
 ### Executing program
 
@@ -48,4 +50,5 @@ ansible-navigator run enable_schedules.yml
 
 ## Authors
 
-Karyn Cassio and Cara Cannarozzi
+* Karyn Cassio (<kcassio@redhat.com>)
+* Cara Cannarozzi (<ccannaro@redhat.com>)
