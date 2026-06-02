@@ -27,7 +27,7 @@ ansible-galaxy collection install ansible.controller
 
 ### Installing
 
-* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in the group_vars directory with your controller URL and API token, respectively
+* Once you have pulled down the playbooks, you will need to update the `controller_url` and `controller_token` vars in the group_vars/all.yml file with your controller URL and API token, respectively
 
 ### Executing program
 
