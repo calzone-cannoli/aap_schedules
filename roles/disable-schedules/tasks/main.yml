@@ -15,6 +15,7 @@
     line: "{{ item.id }}"
     path: ./sched_ids.txt
     create: true
+    backup: true
     mode: '0644'
   loop:
     "{{ enabled_schedules.json.results }}"
