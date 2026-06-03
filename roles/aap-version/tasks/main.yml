@@ -22,11 +22,3 @@
       {% elif aap_version is ansible.builtin.contains("2.") %}
         api/controller/v2
       {% endif %}
-
-- name: Debug config
-  ansible.builtin.debug:
-    var: aap_version
-
-- name: Debug controller api_url
-  ansible.builtin.debug:
-    var: controller_api_url
