@@ -13,4 +13,4 @@
 
     - name: Print controller_token
       ansible.builtin.debug:
-        var: controller_token
+        var: controller_url
