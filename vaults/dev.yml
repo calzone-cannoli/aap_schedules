@@ -1,3 +1,4 @@
+---
 # Unencrypted for purposes of this repo
 # Encrypt prior to using
 # `ansible-vault encrypt vault`
