@@ -3,7 +3,8 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - vaults/all.yml
+    - "group_vars/{{ env }}.yml"
+    - "vaults/{{ env | default('all') }}.yml"
   roles:
     - aap-version
     - enable-schedules
