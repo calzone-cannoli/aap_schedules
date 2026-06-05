@@ -5,6 +5,10 @@
     path: "../sched_ids{{ env }}.txt"
   register: sched_ids_file
 
+- name: Stat the stat
+  ansible.builtin.debug:
+    var: sched_ids_file.stat
+
 - name: Backup and Remove existing Sched IDs File
   when: sched_ids_file.stat.isreg
   block:
