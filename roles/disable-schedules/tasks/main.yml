@@ -37,7 +37,7 @@
 - name: Create file containing enabled schedule IDs
   ansible.builtin.lineinfile:
     line: "{{ item.id }}"
-    path: "../sched_ids{{ env }}.txt"
+    path: "../sched_ids_{{ env }}.txt"
     create: true
     backup: true
     mode: '0644'
